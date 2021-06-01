@@ -1,1 +1,1 @@
-UFOCoords <- read.csv("data/Population.csv")
+populationState <- read.csv("data/stateGraduation.csv")
