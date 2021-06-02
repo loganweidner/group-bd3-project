@@ -11,12 +11,16 @@ shinyUI(
               titlePanel("Relationship between hesitancy and pupil spending per capita"),
               sidebarLayout(
                 sidebarPanel(
-                  uiOutput('x_axis')
+                  uiOutput('x_axis'),
+                  uiOutput('y_axis')
                 ),
                 mainPanel(
                   plotOutput("scatterplot")
                 )
               )
+           ),
+           tabPanel('Table', #data table of data
+              dataTableOutput('table')
            ),
            tabPanel('Findings', #Final tab, findings data
               textOutput('This is where we will write our conclusion and acknowledgements')
