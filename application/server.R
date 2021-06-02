@@ -8,29 +8,43 @@ hes_edu <- read.csv("data/hesitancy_and_education.csv")
 
 shinyserver <- (function(input, output) {
   sample <- reactive({
-    hes_edu 
+    hes_edu
   })
-
+  
+  #make a df with user readable column names for table in shiny app
+  user_data_table <- hes_edu %>% 
+    select(State = state, 
+           'Hesitant %' = hesitant,
+           'Strongly Hesitant %' = strongly_hesitant,
+           'Graduation Rate' = grad_rate, 
+           '$ Per Pupil' = pupil_spending,
+           )
+  
+  #make a scatterplot taking x and y axis as inputs
   output$scatterplot <- renderPlot({
-    data <- hes_edu  
-    ggplot(sample(), aes(x = input$y-axis, y = "hesitant")) +
-      geom_point(mapping = aes(x = input$y-axis, y = hesitant, colour = hesitant)) +
-      geom_smooth(mapping = aes(x = input$y-axis, y = hesitant, colour = hesitant)) +
-      labs(
-        x = "Pupil Spending Per Capita by State", # x-axis label (with units!)
-        color = "h"
-      ) 
-})
-
-  output$locationDropdown <- renderPrint({
+    ggplot(sample(), aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
+      geom_point() +
+      geom_smooth() 
+    })
+  
+  #x axis input for scatterplot
+  output$x_axis <- renderPrint({
     selectInput(
-      inputId = 'y-axis',
+      inputId = 'x_axis',
       label = 'State Data',
-      choices = c('hesitant', 'pupil_spending', 'grad_rate')
+      choices = c('Spending Per Pupil' = 'pupil_spending', 'Garduation Rate' = 'grad_rate')
     )
   })
   
-  function(input, output) {
-    output$value <- renderPrint({ input$select })
-  }
+  #y axis input for scatterplot
+  output$y_axis <- renderPrint({
+    selectInput(
+      inputId = 'y_axis',
+      label = 'Hesitancy Level',
+      choices = c('Hesitant' = 'hesitant', 'Strongly Hesitant' = 'strongly_hesitant')
+    )
+  })
+  
+  #data table using specific readable df
+  output$table <- renderDataTable(user_data_table)
 })
