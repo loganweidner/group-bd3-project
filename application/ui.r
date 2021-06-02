@@ -5,7 +5,7 @@ shinyUI(
     titlePanel("Relationship between hesitancy and pupil spending per capita"),
     sidebarLayout(
       sidebarPanel(
-        uiOutput('locationDropdown')
+        uiOutput('x_axis')
       ),
       mainPanel(
         plotOutput("scatterplot")

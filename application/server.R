@@ -8,29 +8,25 @@ hes_edu <- read.csv("data/hesitancy_and_education.csv")
 
 shinyserver <- (function(input, output) {
   sample <- reactive({
-    hes_edu 
+    hes_edu
   })
 
   output$scatterplot <- renderPlot({
-    data <- hes_edu  
-    ggplot(sample(), aes(x = as.numeric(input$y-axis), y = "hesitant")) +
-      geom_point(mapping = aes(x = as.numeric(input$y-axis), y = hesitant, colour = hesitant)) +
-      geom_smooth(mapping = aes(x = as.numeric(input$y-axis), y = hesitant, colour = hesitant)) +
-      labs(
-        x = "Pupil Spending Per Capita by State", # x-axis label (with units!)
-        color = "h"
-      ) 
-})
+    print(sample())
+    ggplot(sample(), aes_string(x = input$x_axis, y = 'hesitant'), fill = 'black') + 
+      geom_point() +
+      geom_smooth() 
+    })
 
-  output$locationDropdown <- renderPrint({
+  output$x_axis <- renderPrint({
     selectInput(
-      inputId = 'y-axis',
+      inputId = 'x_axis',
       label = 'State Data',
-      choices = c('hesitant', 'pupil_spending', 'grad_rate')
+      choices = c('pupil_spending', 'grad_rate')
     )
   })
   
-  function(input, output) {
-    output$value <- renderPrint({ input$select })
-  }
+#  function(input, output) {
+#    output$value <- renderPrint({ input$select })
+#  }
 })
