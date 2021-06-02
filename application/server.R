@@ -13,9 +13,9 @@ shinyserver <- (function(input, output) {
 
   output$scatterplot <- renderPlot({
     data <- hes_edu  
-    ggplot(sample(), aes(x = as.numeric(input$y-axis), y = "hesitant")) +
-      geom_point(mapping = aes(x = as.numeric(input$y-axis), y = hesitant, colour = hesitant)) +
-      geom_smooth(mapping = aes(x = as.numeric(input$y-axis), y = hesitant, colour = hesitant)) +
+    ggplot(sample(), aes(x = input$y-axis, y = "hesitant")) +
+      geom_point(mapping = aes(x = input$y-axis, y = hesitant, colour = hesitant)) +
+      geom_smooth(mapping = aes(x = input$y-axis, y = hesitant, colour = hesitant)) +
       labs(
         x = "Pupil Spending Per Capita by State", # x-axis label (with units!)
         color = "h"
