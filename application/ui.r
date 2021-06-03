@@ -105,57 +105,58 @@ library (plotly)
                     h3(strong("Analysis and Specific Insight:"), style = 
                                               "font-size:15px;"),
                       helpText("The most interesting findings from this project 
-                               include that while the high school graduation 
-                               rates by state did not seemingly have a correlation 
-                               with vaccine hesitancy, there does seem to be a 
-                               minor trend and a slight positive correlation 
-                               between educational spending per student and 
-                               vaccine hesitancy. Referencing the graphing 
-                               relationships section, when we view the 
-                               scatterplot, we are clearly able to tell that as 
-                               spending per student increases, vaccine hesitancy 
-                               decreases. However, when we view graduation rates 
-                               plotted against vaccine hesitancy, we see no real 
-                               trend, with a graph that oscillates back and 
-                               forth."),
+                          include that while the high school graduation 
+                          rates by state did not seemingly have a correlation 
+                          with vaccine hesitancy, there does seem to be a 
+                          minor trend and a slight positive correlation 
+                          between educational spending per student and 
+                          vaccine hesitancy. Referencing the graphing 
+                          relationships section, when we view the 
+                          scatterplot, we are clearly able to tell that as 
+                          spending per student increases, vaccine hesitancy 
+                          decreases. However, when we view graduation rates 
+                          plotted against vaccine hesitancy, we see no real 
+                          trend, with a graph that oscillates back and 
+                          forth."),
                   h4(strong("Broad Insight:"), style = "font-size:15px;"),
-                  helpText("Broadly speaking, this provides some insight into 
-                           the importance of primary and secondary education 
-                           with regard to vaccine hesitancy. Students in states
-                           with better-resourced schools are more likely to 
-                           understand the scientific basis of the vaccine, and 
-                           thus, are more likely to get vaccinated. Our data 
-                           does not, however, show that states with higher 
-                           high school graduation rates have lower vaccine 
-                           hesitancy rates. This suggests that while investment 
-                           in secondary education is a factor in vaccine 
-                           hesitancy, it is far from the only factor, and other
-                           factors may even have a larger impact."),
+                    helpText("Broadly speaking, this provides some insight into 
+                          the importance of primary and secondary education 
+                          with regard to vaccine hesitancy. Students in states
+                          with better-resourced schools are more likely to 
+                          understand the scientific basis of the vaccine, and 
+                          thus, are more likely to get vaccinated. Our data 
+                          does not, however, show that states with higher 
+                          high school graduation rates have lower vaccine 
+                          hesitancy rates. This suggests that while investment 
+                          in secondary education is a factor in vaccine 
+                          hesitancy, it is far from the only factor, and other
+                          factors may even have a larger impact."),
                   h5(strong("Data Quality:"), style = "font-size:15px;"),
-                  helpText("While I believe that our data was trustworthy and 
-                           accurate, due to the fact that the majority of the 
-                           data was either taken directly from government 
-                           webpages, or cross-verified using multiple sources, 
-                           there may still have been structural inequities that 
-                           impacted our data. For example, some of our data is 
-                           the mean educational spending by state, however, 
-                           students in well-funded school districts have vastly 
-                           different experiences from those in underfunded 
-                           schools, even if both schools are located in the same 
-                           state. Further, a few particularly well-funded school 
-                           districts can serve to severely inflate a mean, as a 
-                           mean is not resistant to drastic outliers. All in all, 
-                           while I do believe the data set is accurate, and 
-                           of high quality, I think that there are some biases 
-                           that must be accounted for when reviewing the data."),    
+                    helpText("While I believe that our data was trustworthy and 
+                          accurate, due to the fact that the majority of the 
+                          data was either taken directly from government 
+                          webpages, or cross-verified using multiple sources, 
+                          there may still have been structural inequities that 
+                          impacted our data. For example, some of our data is 
+                          the mean educational spending by state, however, 
+                          students in well-funded school districts have vastly 
+                          different experiences from those in underfunded 
+                          schools, even if both schools are located in the same 
+                          state. Further, a few particularly well-funded school 
+                          districts can serve to severely inflate a mean, as a 
+                          mean is not resistant to drastic outliers. All in all, 
+                          while I do believe the data set is accurate, and 
+                          of high quality, I think that there are some biases 
+                          that must be accounted for when reviewing the data."),    
                   h6(strong("Future Insight:"), style = "font-size:15px;"),
-                  helpText("For future ideas, we hope to analyze more relevant 
-                  variables like family members per household and household 
-                  income. Moreover, we would add more complex plots like a 3D 
-                  graph or even a histogram to better observe and draw 
-                  relationships with the given data. Ultimately, we would like to 
-                  further our research in exploring reasons why individuals are 
-                  hesitant in receiving the COVID-19 vaccine."),  
+                    helpText("For future ideas, we hope to analyze more relevant 
+                          variables like family members per household and 
+                          household income. Moreover, we would add more complex 
+                          plots like a 3D graph or even a histogram to better 
+                          observe and draw relationships with the given data. 
+                          Ultimately, we would like to further our research in 
+                          exploring reasons why individuals are 
+                          hesitant in receiving the COVID-19 vaccine."),  
                    )
   )
   
