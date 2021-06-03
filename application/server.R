@@ -32,7 +32,7 @@ shinyserver <- (function(input, output) {
     selectInput(
       inputId = 'x_axis',
       label = 'State Data',
-      choices = c('Spending Per Pupil' = 'pupil_spending', 'Garduation Rate' = 'grad_rate')
+      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate')
     )
   })
   
@@ -40,7 +40,7 @@ shinyserver <- (function(input, output) {
   output$y_axis <- renderPrint({
     selectInput(
       inputId = 'y_axis',
-      label = 'Hesitancy Level',
+      label = 'Hesitancy Level (% by State)',
       choices = c('Hesitant' = 'hesitant', 'Strongly Hesitant' = 'strongly_hesitant')
     )
   })

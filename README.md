@@ -24,5 +24,3 @@ worldpopulationreview.com:
 2. Graduation Rates by State ()
 3. Per Pupil Spending on Education by State 
 
-
-(5pt) A few sentences about data quality. Did you find your dataset of reasonable quality? Do you think it gives unbiased results? Do you see issues with potentially harming certain population groups?
