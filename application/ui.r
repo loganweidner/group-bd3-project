@@ -1,6 +1,7 @@
 library(shiny)
 
   ui <- navbarPage('Education and Vaccine Hesitancy', #Make Page tabs
+                   
           tabPanel('About', #first tab, 'About' section
             # For intro display image
             tags$img(src="brainy.jpg", 
@@ -37,13 +38,13 @@ library(shiny)
               helpText("For the combined dataset, we retrieved and filtered the 
                         data through the websites: Kaggle.com and worldpopulationreview.com. "),
             h5(strong("Creators:"), style = "font-size:15px;"),
-              helpText("Anthony Kim, Pranav, and Logan"),
+              helpText("Anthony Kim, Pranav Senthilkumar, and Logan Weidner"),
           ),
             tabPanel('State Data', #second tab, state data represented as a map
               titlePanel("Relationship between hesitancy and pupil spending per capita"),
                 sidebarLayout(
                   sidebarPanel(
-                    uiOutput('map_map_x_axis')
+                    uiOutput('map_x_axis')
                     ),
                     mainPanel(
                         plotlyOutput("mapPlot"))
@@ -70,8 +71,8 @@ library(shiny)
                         ),
                           mainPanel(
                           plotOutput("scatterplot")
-                              )
-                            )
+                        )
+                      )
                    ),
             tabPanel('Table', #data table of data
               dataTableOutput('table')),

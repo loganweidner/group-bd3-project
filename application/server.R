@@ -75,7 +75,10 @@ shinyserver <- (function(input, output) {
     selectInput(
       inputId = 'map_x_axis',
       label = 'State Data',
-      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate')
+      choices = c('Hesitant %' = 'hesitant',
+                  'Strongly Hesitant %' = 'strongly_hesitant',
+                  'Spending Per Pupil' = 'pupil_spending', 
+                  'Graduation Rate' = 'grad_rate')
     )
   })
   
