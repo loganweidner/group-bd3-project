@@ -10,8 +10,7 @@ hes_edu <- read.csv("data/hesitancy_and_education.csv")
 
 shinyserver <- (function(input, output) {
   sample <- reactive({
-    hes_edu %>%
-      filter(input$map_x_axis)
+    hes_edu
   })
   
 
@@ -26,7 +25,7 @@ shinyserver <- (function(input, output) {
   
   #make a scatterplot taking x and y axis as inputs
   output$scatterplot <- renderPlot({
-    ggplot(hes_edu, aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
+    ggplot(sample(), aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
       geom_point() +
       geom_smooth() 
     })
@@ -59,9 +58,9 @@ shinyserver <- (function(input, output) {
     
     fig <- plot_geo(new_data, locationmode = 'USA-states') %>%
       add_trace(
-        z = ~sample(),
+        z = ~get(input$map_x_axis),
         locations = ~abbrevs,
-        color = ~sample(),
+        color = ~get(input$map_x_axis),
         colors = 'Purples'
       ) %>%
       layout(
