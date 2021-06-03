@@ -1,30 +1,32 @@
 
-library(shiny)
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
 
-shinyUI(
-  ui <- navbarPage('Education and Vaccine Hesitancy', #Make Page tabs
-                   tabPanel('About', #first tab, 'About' section
-                            textOutput('This is where we will describe the project and data.')
-                   ),
-                   tabPanel('State Data' #second tab, state data represented as a map
-                   ),
-                   tabPanel('Graphing Relationships', #third tab, scatterplot made to show user relationship between vars
-                            titlePanel("Relationship between hesitancy and pupil spending per capita"),
-                            sidebarLayout(
-                              sidebarPanel(
-                                uiOutput('x_axis'),
-                                uiOutput('y_axis')
-                              ),
-                              mainPanel(
-                                plotOutput("scatterplot")
-                              )
-                            )
-                   ),
-                   tabPanel('Table', #data table of data
-                            dataTableOutput('table')
-                   ),
-                   tabPanel('Findings', #Final tab, findings data
-                            textOutput('This is where we will write our conclusion and acknowledgements')
-                   )
-  )
-)
+## Data 
+hes_edu <- read.csv("data/hesitancy_and_education.csv")
+
+shinyserver <- (function(input, output) {
+  sample <- reactive({
+    hes_edu
+  })
+  
+  output$scatterplot <- renderPlot({
+    print(sample())
+    ggplot(sample(), aes_string(x = input$x_axis, y = 'hesitant'), fill = 'black') + 
+      geom_point() +
+      geom_smooth() 
+  })
+  
+  output$x_axis <- renderPrint({
+    selectInput(
+      inputId = 'x_axis',
+      label = 'State Data',
+      choices = c('pupil_spending', 'grad_rate')
+    )
+  })
+  
+  #  function(input, output) {
+  #    output$value <- renderPrint({ input$select })
+  #  }
+})
