@@ -1,6 +1,7 @@
 library(shiny)
 library (plotly)
 
+
   ui <- navbarPage('The Impact of Education on Vaccine Hesitancy in the United
                    States', #Make Page tabs
                    
@@ -152,7 +153,7 @@ library (plotly)
                   variables like family members per household and household 
                   income. Moreover, we would add more complex plots like a 3D 
                   graph or even a histogram to better observe and draw 
-                  relationships withthe given data. Ultimately, we would like to 
+                  relationships with the given data. Ultimately, we would like to 
                   further our research in exploring reasons why individuals are 
                   hesitant in receiving the COVID-19 vaccine."),  
                    )
