@@ -10,7 +10,8 @@ hes_edu <- read.csv("data/hesitancy_and_education.csv")
 
 shinyserver <- (function(input, output) {
   sample <- reactive({
-    hes_edu
+    hes_edu %>%
+      filter(input$map_x_axis)
   })
   
 
@@ -25,7 +26,7 @@ shinyserver <- (function(input, output) {
   
   #make a scatterplot taking x and y axis as inputs
   output$scatterplot <- renderPlot({
-    ggplot(sample(), aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
+    ggplot(hes_edu, aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
       geom_point() +
       geom_smooth() 
     })
@@ -36,7 +37,7 @@ shinyserver <- (function(input, output) {
     selectInput(
       inputId = 'x_axis',
       label = 'State Data',
-      choices = c('Spending Per Pupil' = 'pupil_spending', 'Garduation Rate' = 'grad_rate')
+      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate')
     )
   })
   
@@ -51,15 +52,16 @@ shinyserver <- (function(input, output) {
   
 
   output$mapPlot <- renderPlotly({
+    
     new_data <- hes_edu %>%
     mutate(uppercase = str_to_title(state)) %>%
       mutate(abbrevs = state.abb[match(uppercase, state.name)])
     
     fig <- plot_geo(new_data, locationmode = 'USA-states') %>%
       add_trace(
-        z = ~grad_rate,
+        z = ~sample(),
         locations = ~abbrevs,
-        color = ~grad_rate,
+        color = ~sample(),
         colors = 'Purples'
       ) %>%
       layout(
@@ -68,6 +70,14 @@ shinyserver <- (function(input, output) {
       )
     
     return(fig)
+  })
+  
+  output$map_x_axis <- renderPrint({
+    selectInput(
+      inputId = 'map_x_axis',
+      label = 'State Data',
+      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate')
+    )
   })
   
   

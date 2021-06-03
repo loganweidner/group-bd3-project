@@ -5,7 +5,16 @@ shinyUI(
                    tabPanel('About', #first tab, 'About' section
                             textOutput('This is where we will describe the project and data.')
                    ),
-                   tabPanel('State Data' #second tab, state data represented as a map
+                   tabPanel('State Data', #second tab, state data represented as a map
+                            titlePanel("Relationship between hesitancy and pupil spending per capita"),
+                            sidebarLayout(
+                              sidebarPanel(
+                               uiOutput('map_x_axis')
+                              ),
+                              mainPanel(
+                                plotlyOutput("mapPlot")
+                              )
+                            )
                    ),
                    tabPanel('Graphing Relationships', #third tab, scatterplot made to show user relationship between vars
                             titlePanel("Relationship between hesitancy and pupil spending per capita"),
