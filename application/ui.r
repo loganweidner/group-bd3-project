@@ -1,4 +1,5 @@
 library(shiny)
+library (plotly)
 
   ui <- navbarPage('The Impact of Education on Vaccine Hesitancy in the United
                    States', #Make Page tabs
@@ -31,7 +32,7 @@ library(shiny)
             communication and education which can drastically influence the 
             opinions formed about the COVID-19 vaccines. So in this project, 
             we will be observing the relationships between vaccine hesitancy, 
-            a existing scale within our dataset,and state education through 
+            a existing scale within our dataset, and state education through 
             graduation rates and per-pupil spending. To ultimately find out if 
             education is a prominent factor in the hesitancy of vaccines. "),
             # For the data description
@@ -48,9 +49,14 @@ library(shiny)
                     uiOutput('map_x_axis'),
                     tags$p("Description:"), # Description for plot
                     helpText("The interactive map shown allows users to choose 
-                             a specific variable through the dropdown menu. Then,
+                             a specific variable through the dropdown menu. Then
                              the given data, from the chosen variable, is 
-                             reflected onto the color map.")
+                             reflected onto the color map. To elaborate, if a 
+                             user were to choose a variable, for example Grad Rate,
+                             the information from that specific column would 
+                             accordingly match each state on the map. Allowing
+                             users to hover their mouse over certain states to 
+                             see the differences in numbers and visuals")
                   ),
                     mainPanel(
                         plotlyOutput("mapPlot"))
@@ -69,11 +75,11 @@ library(shiny)
                           different relationships with Graduation 
                           Rate and Spending per Pupil to better observe the 
                           different effects of educational and financial 
-                          factors. As both can immensely impact the 
+                          factors on vaccine hesitancy. As both can immensely impact the 
                           decisons everyday Americans make in terms of, for 
-                          example, the act of getting vaccinated. However we 
-                          should note that the Hesitancy level does 
-                          not display distinguishable relationships if inputed.")
+                          example, the act of getting vaccinated. Lastly, we 
+                          should note that the Hesitancy level does not display 
+                          distinguishable relationships if inputed.")
                         ),
                           mainPanel(
                           plotOutput("scatterplot")

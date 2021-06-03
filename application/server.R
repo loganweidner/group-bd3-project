@@ -23,12 +23,6 @@ shinyserver <- (function(input, output) {
            '$ Per Pupil' = pupil_spending,
            )
   
-  #make a scatterplot taking x and y axis as inputs
-  output$scatterplot <- renderPlot({
-    ggplot(sample(), aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
-      geom_point() +
-      geom_smooth() 
-    })
   
   #x axis input for scatterplot
 
@@ -36,7 +30,8 @@ shinyserver <- (function(input, output) {
     selectInput(
       inputId = 'x_axis',
       label = 'State Data',
-      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate')
+      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate'),
+      selected = 'pupil_spending'
     )
   })
   
@@ -45,8 +40,17 @@ shinyserver <- (function(input, output) {
     selectInput(
       inputId = 'y_axis',
       label = 'Hesitancy Level (% by State)',
-      choices = c('Hesitant' = 'hesitant', 'Strongly Hesitant' = 'strongly_hesitant')
+      choices = c('Hesitant' = 'hesitant', 'Strongly Hesitant' = 'strongly_hesitant'),
+      selected = 'hesitant'
     )
+  })
+  
+  #make a scatterplot taking x and y axis as inputs
+  output$scatterplot <- renderPlot({
+    print(input$x_axis) 
+    ggplot(hes_edu, aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') +
+      geom_point() +
+        geom_smooth(method = "loess")
   })
   
   output$mapPlot <- renderPlotly({
