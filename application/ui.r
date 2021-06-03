@@ -49,7 +49,7 @@ library(shiny)
                             titlePanel("Relationship between hesitancy and pupil spending per capita"),
                             sidebarLayout(
                               sidebarPanel(
-                                uiOutput('map_map_x_axis')),
+                                uiOutput('map_x_axis')),
                               mainPanel(
                                 plotlyOutput("mapPlot")
                               )
