@@ -8,7 +8,8 @@ shinyUI(
         uiOutput('x_axis')
       ),
       mainPanel(
-        plotOutput("scatterplot")
+        plotOutput("scatterplot"),
+        plotlyOutput("mapPlot")
       )
     )
   ))
