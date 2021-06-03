@@ -1,0 +1,13 @@
+name: application
+title: application
+username:
+account: amk002
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4222184
+bundleId: 4672148
+url: https://amk002.shinyapps.io/application/
+when: 1622708496.11435
+lastSyncTime: 1622708496.11435
+asMultiple: FALSE
+asStatic: FALSE

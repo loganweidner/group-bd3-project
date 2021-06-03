@@ -24,3 +24,12 @@ worldpopulationreview.com:
 2. Graduation Rates by State ()
 3. Per Pupil Spending on Education by State 
 
+
+(3pt) Future ideas about how to advance the project
+
+For future ideas, we hope to analyze more relevant variables like family members 
+per household and household income. Moreover, we would add more complex plots 
+like a 3D graph or even a histogram to better observe and draw relationships with
+the given data.Ultimately, we would like to further our 
+research in exploring reasons to why individuals are hesitant in receiving the COVID-19 
+vaccine.

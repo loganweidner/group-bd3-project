@@ -49,7 +49,6 @@ shinyserver <- (function(input, output) {
     )
   })
   
-
   output$mapPlot <- renderPlotly({
     
     new_data <- hes_edu %>%
@@ -64,7 +63,7 @@ shinyserver <- (function(input, output) {
         colors = 'Purples'
       ) %>%
       layout(
-        title = 'Map of HS Grad Rate/Vaccine Hesitancy',
+        title = 'Map of HS Grad Rate, Vaccine Hesitancy, and Pupil Per Spending',
         geo = list(scope = 'usa')
       )
     

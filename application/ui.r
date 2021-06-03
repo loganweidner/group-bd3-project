@@ -1,6 +1,7 @@
 library(shiny)
 
-  ui <- navbarPage('Education and Vaccine Hesitancy', #Make Page tabs
+  ui <- navbarPage('The Impact of Education on Vaccine Hesitancy in the United
+                   States', #Make Page tabs
                    
           tabPanel('About', #first tab, 'About' section
             # For intro display image
@@ -41,17 +42,22 @@ library(shiny)
               helpText("Anthony Kim, Pranav Senthilkumar, and Logan Weidner"),
           ),
             tabPanel('State Data', #second tab, state data represented as a map
-              titlePanel("Relationship between hesitancy and pupil spending per capita"),
+              titlePanel("Interactive Map"),
                 sidebarLayout(
                   sidebarPanel(
-                    uiOutput('map_x_axis')
-                    ),
+                    uiOutput('map_x_axis'),
+                    tags$p("Description:"), # Description for plot
+                    helpText("The interactive map shown allows users to choose 
+                             a specific variable through the dropdown menu. Then,
+                             the given data, from the chosen variable, is 
+                             reflected onto the color map.")
+                  ),
                     mainPanel(
                         plotlyOutput("mapPlot"))
                       )
                    ),
             tabPanel('Graphing Relationships', #third tab, scatterplot made to show user relationship between vars
-              titlePanel("Relationship between hesitancy and pupil spending per capita"),
+              titlePanel("Interactive Plot"),
                 sidebarLayout(
                   sidebarPanel(
                     uiOutput('x_axis'),
@@ -63,11 +69,11 @@ library(shiny)
                           different relationships with Graduation 
                           Rate and Spending per Pupil to better observe the 
                           different effects of educational and financial 
-                          inequality. As both factors can immensely impact the 
+                          factors. As both can immensely impact the 
                           decisons everyday Americans make in terms of, for 
-                          example, vaccine hesitancy. However we should note 
-                          that the Hesitancy level does not display 
-                          distinguishable relationships if inputed.")
+                          example, the act of getting vaccinated. However we 
+                          should note that the Hesitancy level does 
+                          not display distinguishable relationships if inputed.")
                         ),
                           mainPanel(
                           plotOutput("scatterplot")
@@ -89,8 +95,60 @@ library(shiny)
                     # For the line break
                     h2("_____________________________________________________"),
                     # Title of the Project
-                    h3(strong("Analysis:"), style = "font-size:15px;"),
-                      helpText("stuff")
+                    h3(strong("Analysis and Specific Insight:"), style = 
+                                              "font-size:15px;"),
+                      helpText("The most interesting findings from this project 
+                               include that while the high school graduation 
+                               rates by state did not seemingly have a correlation 
+                               with vaccine hesitancy, there does seem to be a 
+                               minor trend and a slight positive correlation 
+                               between educational spending per student and 
+                               vaccine hesitancy. Referencing the graphing 
+                               relationships section, when we view the 
+                               scatterplot, we are clearly able to tell that as 
+                               spending per student increases, vaccine hesitancy 
+                               decreases. However, when we view graduation rates 
+                               plotted against vaccine hesitancy, we see no real 
+                               trend, with a graph that oscillates back and 
+                               forth."),
+                  h4(strong("Broad Insight:"), style = "font-size:15px;"),
+                  helpText("Broadly speaking, this provides some insight into 
+                           the importance of primary and secondary education 
+                           with regard to vaccine hesitancy. Students in states
+                           with better-resourced schools are more likely to 
+                           understand the scientific basis of the vaccine, and 
+                           thus, are more likely to get vaccinated. Our data 
+                           does not, however, show that states with higher 
+                           high school graduation rates have lower vaccine 
+                           hesitancy rates. This suggests that while investment 
+                           in secondary education is a factor in vaccine 
+                           hesitancy, it is far from the only factor, and other
+                           factors may even have a larger impact."),
+                  h5(strong("Data Quality:"), style = "font-size:15px;"),
+                  helpText("While I believe that our data was trustworthy and 
+                           accurate, due to the fact that the majority of the 
+                           data was either taken directly from government 
+                           webpages, or cross-verified using multiple sources, 
+                           there may still have been structural inequities that 
+                           impacted our data. For example, some of our data is 
+                           the mean educational spending by state, however, 
+                           students in well-funded school districts have vastly 
+                           different experiences from those in underfunded 
+                           schools, even if both schools are located in the same 
+                           state. Further, a few particularly well-funded school 
+                           districts can serve to severely inflate a mean, as a 
+                           mean is not resistant to drastic outliers. All in all, 
+                           while I do believe the data set is accurate, and 
+                           of high quality, I think that there are some biases 
+                           that must be accounted for when reviewing the data."),    
+                  h6(strong("Future Insight:"), style = "font-size:15px;"),
+                  helpText("For future ideas, we hope to analyze more relevant 
+                  variables like family members per household and household 
+                  income. Moreover, we would add more complex plots like a 3D 
+                  graph or even a histogram to better observe and draw 
+                  relationships withthe given data. Ultimately, we would like to 
+                  further our research in exploring reasons why individuals are 
+                  hesitant in receiving the COVID-19 vaccine."),  
                    )
   )
   
