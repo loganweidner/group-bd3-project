@@ -1,4 +1,5 @@
 library(shiny)
+library(plotly)
 
   ui <- navbarPage('The Impact of Education on Vaccine Hesitancy in the United
                    States', #Make Page tabs
