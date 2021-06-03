@@ -2,20 +2,6 @@
 library(shiny)
 
 shinyUI(
-  <<<<<<< HEAD
-  fluidPage(
-    titlePanel("Relationship between hesitancy and pupil spending per capita"),
-    sidebarLayout(
-      sidebarPanel(
-        uiOutput('x_axis')
-      ),
-      mainPanel(
-        plotOutput("scatterplot"),
-        plotlyOutput("mapPlot")
-      )
-    )
-  ))
-=======
   ui <- navbarPage('Education and Vaccine Hesitancy', #Make Page tabs
                    tabPanel('About', #first tab, 'About' section
                             textOutput('This is where we will describe the project and data.')
@@ -42,4 +28,3 @@ shinyUI(
                    )
   )
 )
->>>>>>> 073aa77b0c2348090262d2939646b8c423fab3d8
