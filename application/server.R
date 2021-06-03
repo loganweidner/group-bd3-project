@@ -4,6 +4,7 @@ library(ggplot2)
 library(dplyr)
 library (plotly)
 
+
 ## Data 
 hes_edu <- read.csv("data/hesitancy_and_education.csv")
 
@@ -12,6 +13,7 @@ shinyserver <- (function(input, output) {
     hes_edu
   })
   
+
   #make a df with user readable column names for table in shiny app
   user_data_table <- hes_edu %>% 
     select(State = state, 
@@ -29,6 +31,7 @@ shinyserver <- (function(input, output) {
     })
   
   #x axis input for scatterplot
+
   output$x_axis <- renderPrint({
     selectInput(
       inputId = 'x_axis',
@@ -46,7 +49,6 @@ shinyserver <- (function(input, output) {
     )
   })
   
-<<<<<<< HEAD
 
   output$mapPlot <- renderPlotly({
     new_data <- hes_edu %>%
@@ -74,8 +76,14 @@ shinyserver <- (function(input, output) {
 #  function(input, output) {
 #    output$value <- renderPrint({ input$select })
 #  }
-=======
+
   #data table using specific readable df
   output$table <- renderDataTable(user_data_table)
->>>>>>> 073aa77b0c2348090262d2939646b8c423fab3d8
-})
+
+      choices = c('pupil_spending', 'grad_rate')
+    
+  })
+  
+  #  function(input, output) {
+  #    output$value <- renderPrint({ input$select })
+  #  }
