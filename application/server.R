@@ -11,22 +11,42 @@ shinyserver <- (function(input, output) {
   sample <- reactive({
     hes_edu
   })
-
+  
+  #make a df with user readable column names for table in shiny app
+  user_data_table <- hes_edu %>% 
+    select(State = state, 
+           'Hesitant %' = hesitant,
+           'Strongly Hesitant %' = strongly_hesitant,
+           'Graduation Rate' = grad_rate, 
+           '$ Per Pupil' = pupil_spending,
+           )
+  
+  #make a scatterplot taking x and y axis as inputs
   output$scatterplot <- renderPlot({
-    print(sample())
-    ggplot(sample(), aes_string(x = input$x_axis, y = 'hesitant'), fill = 'black') + 
+    ggplot(sample(), aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
       geom_point() +
       geom_smooth() 
     })
-
+  
+  #x axis input for scatterplot
   output$x_axis <- renderPrint({
     selectInput(
       inputId = 'x_axis',
       label = 'State Data',
-      choices = c('pupil_spending', 'grad_rate')
+      choices = c('Spending Per Pupil' = 'pupil_spending', 'Garduation Rate' = 'grad_rate')
     )
   })
   
+  #y axis input for scatterplot
+  output$y_axis <- renderPrint({
+    selectInput(
+      inputId = 'y_axis',
+      label = 'Hesitancy Level',
+      choices = c('Hesitant' = 'hesitant', 'Strongly Hesitant' = 'strongly_hesitant')
+    )
+  })
+  
+<<<<<<< HEAD
 
   output$mapPlot <- renderPlotly({
     new_data <- hes_edu %>%
@@ -54,4 +74,8 @@ shinyserver <- (function(input, output) {
 #  function(input, output) {
 #    output$value <- renderPrint({ input$select })
 #  }
+=======
+  #data table using specific readable df
+  output$table <- renderDataTable(user_data_table)
+>>>>>>> 073aa77b0c2348090262d2939646b8c423fab3d8
 })
