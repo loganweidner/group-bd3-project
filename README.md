@@ -1,5 +1,7 @@
 # group-bd3-project
 
+## [Shiny application](https://amk002.shinyapps.io/BD3Group/?_ga=2.261092943.371402908.1622708470-1439134486.1622003163)
+
 ## Intro 
 The COVID-19 Pandemic, due to the unexpected chaos and confusion, has caused
 doubts between the American public and the U.S. government/companies. From the 
@@ -20,9 +22,9 @@ vaccines.
 The data used in this project are taken from Kaggle.com and 
 worldpopulationreview.com: 
 
-1. Vaccine Hesistancy (Kaggle)
-2. Graduation Rates by State ()
-3. Per Pupil Spending on Education by State 
+1. Vaccine Hesistancy ([Kaggle](https://www.kaggle.com/deepshah16/vaccine-hesitancy-for-covid19))
+2. Graduation Rates by State ([World Population Review](https://worldpopulationreview.com/en/state-rankings/high-school-graduation-rates-by-state))
+3. Per Pupil Spending on Education by State ([World Population Review](https://worldpopulationreview.com/en/state-rankings/per-pupil-spending-by-state))
 
 
 (3pt) Future ideas about how to advance the project
