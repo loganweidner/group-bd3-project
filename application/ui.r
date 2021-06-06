@@ -1,3 +1,4 @@
+#load libraries
 library(shiny)
 library (plotly)
 
@@ -59,7 +60,7 @@ library (plotly)
                              users to hover their mouse over certain states to 
                              see the differences in numbers and visuals")
                   ),
-                    mainPanel(
+                    mainPanel( #main panel of the page; the data map
                         plotlyOutput("mapPlot"))
                       )
                    ),
@@ -82,7 +83,7 @@ library (plotly)
                           should note that the Hesitancy level does not display 
                           distinguishable relationships if inputed.")
                         ),
-                          mainPanel(
+                          mainPanel( #main panel of the page; the scatterplot
                           plotOutput("scatterplot")
                         )
                       )
@@ -104,6 +105,7 @@ library (plotly)
                     # Title of the Project
                     h3(strong("Analysis and Specific Insight:"), style = 
                                               "font-size:15px;"),
+                      #summary text
                       helpText("The most interesting findings from this project 
                           include that while the high school graduation 
                           rates by state did not seemingly have a correlation 

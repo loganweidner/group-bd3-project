@@ -1,4 +1,4 @@
-
+#load libraries
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
@@ -9,11 +9,7 @@ library (plotly)
 hes_edu <- read.csv("data/hesitancy_and_education.csv")
 
 shinyserver <- (function(input, output) {
-  sample <- reactive({
-    hes_edu
-  })
   
-
   #make a df with user readable column names for table in shiny app
   user_data_table <- hes_edu %>% 
     select(State = state, 
@@ -24,8 +20,7 @@ shinyserver <- (function(input, output) {
            )
   
   
-  #x axis input for scatterplot
-
+  #x axis (education) input for scatterplot
   output$x_axis <- renderPrint({
     selectInput(
       inputId = 'x_axis',
@@ -35,7 +30,7 @@ shinyserver <- (function(input, output) {
     )
   })
   
-  #y axis input for scatterplot
+  #y axis (vaccine hesitancy) input for scatterplot
   output$y_axis <- renderPrint({
     selectInput(
       inputId = 'y_axis',
@@ -47,14 +42,16 @@ shinyserver <- (function(input, output) {
   
   #make a scatterplot taking x and y axis as inputs
   output$scatterplot <- renderPlot({
-    print(input$x_axis) 
     ggplot(hes_edu, aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') +
       geom_point() +
+        #make it use the loess method to get rid of warnings
         geom_smooth(method = "loess")
   })
   
+  #Make a map of state data
   output$mapPlot <- renderPlotly({
     
+    #make isolated data set for map
     new_data <- hes_edu %>%
     mutate(uppercase = str_to_title(state)) %>%
       mutate(abbrevs = state.abb[match(uppercase, state.name)])
@@ -74,6 +71,7 @@ shinyserver <- (function(input, output) {
     return(fig)
   })
   
+  #Make selection dropdown for map variable selection
   output$map_x_axis <- renderPrint({
     selectInput(
       inputId = 'map_x_axis',
@@ -84,13 +82,6 @@ shinyserver <- (function(input, output) {
                   'Graduation Rate' = 'grad_rate')
     )
   })
-  
-  
-  
-  
-#  function(input, output) {
-#    output$value <- renderPrint({ input$select })
-#  }
 
   #data table using specific readable df
   output$table <- renderDataTable(user_data_table)
@@ -98,7 +89,3 @@ shinyserver <- (function(input, output) {
       choices = c('pupil_spending', 'grad_rate')
     
   })
-  
-  #  function(input, output) {
-  #    output$value <- renderPrint({ input$select })
-  #  }
