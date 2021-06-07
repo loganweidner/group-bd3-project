@@ -1,4 +1,6 @@
 # group-bd3-project
+By Anthony Kim, Pranav Senthilkumar, and Logan Weidner
+
 
 ## [Shiny application](https://amk002.shinyapps.io/BD3Group/?_ga=2.261092943.371402908.1622708470-1439134486.1622003163)
 

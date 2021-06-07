@@ -1,3 +1,4 @@
+#load libraries
 library(shiny)
 library (plotly)
 
@@ -47,7 +48,11 @@ library (plotly)
               titlePanel("Interactive Map"),
                 sidebarLayout(
                   sidebarPanel(
+<<<<<<< HEAD
                     uiOutput('map_x_axis'),
+=======
+                    uiOutput('map_var'),
+>>>>>>> 333099a8acd6aacc0d4a55bc7cb8be703123b2b6
                     tags$p("Description:"), # Description for plot
                     helpText("The interactive map shown allows users to choose 
                              a specific variable through the dropdown menu. Then
@@ -59,7 +64,11 @@ library (plotly)
                              users to hover their mouse over certain states to 
                              see the differences in numbers and visuals")
                   ),
+<<<<<<< HEAD
                     mainPanel(
+=======
+                    mainPanel( #main panel of the page; the data map
+>>>>>>> 333099a8acd6aacc0d4a55bc7cb8be703123b2b6
                         plotlyOutput("mapPlot"))
                       )
                    ),
@@ -82,7 +91,11 @@ library (plotly)
                           should note that the Hesitancy level does not display 
                           distinguishable relationships if inputed.")
                         ),
+<<<<<<< HEAD
                           mainPanel(
+=======
+                          mainPanel( #main panel of the page; the scatterplot
+>>>>>>> 333099a8acd6aacc0d4a55bc7cb8be703123b2b6
                           plotOutput("scatterplot")
                         )
                       )
@@ -104,6 +117,10 @@ library (plotly)
                     # Title of the Project
                     h3(strong("Analysis and Specific Insight:"), style = 
                                               "font-size:15px;"),
+<<<<<<< HEAD
+=======
+                      #summary text
+>>>>>>> 333099a8acd6aacc0d4a55bc7cb8be703123b2b6
                       helpText("The most interesting findings from this project 
                           include that while the high school graduation 
                           rates by state did not seemingly have a correlation 

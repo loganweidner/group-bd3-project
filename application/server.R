@@ -1,4 +1,4 @@
-
+#load libraries
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
@@ -9,11 +9,7 @@ library (plotly)
 hes_edu <- read.csv("data/hesitancy_and_education.csv")
 
 shinyserver <- (function(input, output) {
-  sample <- reactive({
-    hes_edu
-  })
   
-
   #make a df with user readable column names for table in shiny app
   user_data_table <- hes_edu %>% 
     select(State = state, 
@@ -23,38 +19,41 @@ shinyserver <- (function(input, output) {
            '$ Per Pupil' = pupil_spending,
            )
   
-  #make a scatterplot taking x and y axis as inputs
-  output$scatterplot <- renderPlot({
-    ggplot(sample(), aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') + 
-      geom_point() +
-      geom_smooth() 
-    })
   
-  #x axis input for scatterplot
-
+  #x axis (education) input for scatterplot
   output$x_axis <- renderPrint({
     selectInput(
       inputId = 'x_axis',
       label = 'State Data',
-      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate')
+      choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate'),
+      selected = 'pupil_spending'
     )
   })
   
-  #y axis input for scatterplot
+  #y axis (vaccine hesitancy) input for scatterplot
   output$y_axis <- renderPrint({
     selectInput(
       inputId = 'y_axis',
-      label = 'Hesitancy Level',
-      choices = c('Hesitant' = 'hesitant', 'Strongly Hesitant' = 'strongly_hesitant')
+      label = 'Hesitancy Level (% by State)',
+      choices = c('Hesitant' = 'hesitant', 'Strongly Hesitant' = 'strongly_hesitant'),
+      selected = 'hesitant'
     )
   })
   
-# creating a map using plotly
+  #make a scatterplot taking x and y axis as inputs
+  output$scatterplot <- renderPlot({
+    ggplot(hes_edu, aes_string(x = input$x_axis, y = input$y_axis), fill = 'black') +
+      geom_point() +
+        #make it use the loess method to get rid of warnings
+        geom_smooth(method = "loess")
+  })
+  
+  # creating a map using plotly
   output$mapPlot <- renderPlotly({
     
     #plotly requires state abbreviations, adding that data column
     new_data <- hes_edu %>%
-    mutate(uppercase = str_to_title(state)) %>%
+      mutate(uppercase = str_to_title(state)) %>%
       mutate(abbrevs = state.abb[match(uppercase, state.name)])
     
     #using plotly's US Map, making sure only US is shown, and adding the data 
@@ -88,5 +87,8 @@ shinyserver <- (function(input, output) {
       choices = c('pupil_spending', 'grad_rate')
     
   })
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 333099a8acd6aacc0d4a55bc7cb8be703123b2b6
