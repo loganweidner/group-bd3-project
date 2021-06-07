@@ -27,7 +27,7 @@ worldpopulationreview.com:
 3. Per Pupil Spending on Education by State ([World Population Review](https://worldpopulationreview.com/en/state-rankings/per-pupil-spending-by-state))
 
 
-(3pt) Future ideas about how to advance the project
+## Future ideas about how to advance the project
 
 For future ideas, we hope to analyze more relevant variables like family members 
 per household and household income. Moreover, we would add more complex plots 
