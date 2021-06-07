@@ -28,7 +28,6 @@ worldpopulationreview.com:
 
 
 ## Future ideas about how to advance the project
-
 For future ideas, we hope to analyze more relevant variables like family members 
 per household and household income. Moreover, we would add more complex plots 
 like a 3D graph or even a histogram to better observe and draw relationships with
