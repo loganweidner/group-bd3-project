@@ -81,13 +81,6 @@ shinyserver <- (function(input, output) {
       choices = c('Spending Per Pupil' = 'pupil_spending', 'Graduation Rate' = 'grad_rate')
     )
   })
-  
-  
-  
-  
-#  function(input, output) {
-#    output$value <- renderPrint({ input$select })
-#  }
 
   #data table using specific readable df
   output$table <- renderDataTable(user_data_table)
@@ -96,6 +89,4 @@ shinyserver <- (function(input, output) {
     
   })
   
-  #  function(input, output) {
-  #    output$value <- renderPrint({ input$select })
-  #  }
+
